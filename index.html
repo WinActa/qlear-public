@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QlearScape | Powered by Intelligence</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 7.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+      color: white;
+      text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 30px #3b82f6;
+      animation: zoomPulse 5s ease-in-out infinite;
+    }
+
+    @keyframes zoomPulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .shimmer {
+      font-size: 1.6rem;
+      background: linear-gradient(90deg, #ffffff, #60a5fa, #ffffff);
+      background-size: 200% auto;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: shimmer 2.5s linear infinite;
+    }
+
+    @keyframes shimmer {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    .countdown {
+      margin-top: 2.5rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .btn {
+      margin-top: 2.5rem;
+      padding: 0.85rem 2rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      background: #3b82f6;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #2563eb;
+      transform: scale(1.05);
+    }
+
+    .background-animated {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+      opacity: 0.08;
+      z-index: 0;
+      animation: pulseBG 30s infinite alternate;
+    }
+
+    @keyframes pulseBG {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: 100% 100%;
+      }
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-animated"></div>
+  <div class="content">
+    <h1>QlearScape</h1>
+    <div class="shimmer">Built for Agents, powered by intelligence</div>
+    <div class="countdown" id="countdown"></div>
+    <button class="btn" onclick="alert('Signup form coming soon.')">Get Notified</button>
+  </div>
+
+  <script>
+    const targetDate = new Date("2025-09-15T00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const gap = targetDate - now;
+
+      const second = 1000;
+      const minute = second * 60;
+      const hour = minute * 60;
+      const day = hour * 24;
+
+      const days = Math.floor(gap / day);
+      const hours = Math.floor((gap % day) / hour);
+      const minutes = Math.floor((gap % hour) / minute);
+      const seconds = Math.floor((gap % minute) / second);
+
+      document.getElementById("countdown").innerHTML =
+        `Beta Launch in: ${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
